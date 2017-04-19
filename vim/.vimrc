@@ -5,14 +5,18 @@ syntax enable
 syntax on
 filetype on
 filetype plugin indent on
+set backspace=2
 set tabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
 
 set list listchars=tab:»·,trail:·
+set nowrap
+set fo-=t
 set textwidth=80
 set colorcolumn=+1
+autocmd BufEnter * setlocal formatoptions-=c formatoptions-=q formatoptions-=n formatoptions-=r formatoptions-=o formatoptions-=l formatoptions-=t
 
 set number
 set numberwidth=5
@@ -28,28 +32,6 @@ set cursorline cursorcolumn
 let mapleader=";"
 colorscheme solarized
 
-" =================================
-" plugins config
-" =================================
-
-" 设置NERDTreetagbar的宽度
-let g:NERDTreeWinSize = 20
-let g:tagbar_width=20
-
-" nerdtree-git-plugin config
-" --------------------------
-let g:NERDTreeShowIgnoredStatus = 1
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
 
 " =================================
 " vim-plug default config
@@ -69,7 +51,8 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-master branch
@@ -102,3 +85,28 @@ Plug 'ShowTrailingWhitespace'
 call plug#end()
 
 
+" =================================
+" plugins config
+" =================================
+
+" 设置NERDTreetagbar的宽度
+au VimEnter * NERDTree
+let g:NERDTreeWinSize = 20
+let g:tagbar_width=20
+let g:netrw_banner=0
+let g:netrw_liststyle = 3
+
+" nerdtree-git-plugin config
+" --------------------------
+let g:NERDTreeShowIgnoredStatus = 1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
