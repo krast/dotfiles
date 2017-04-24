@@ -120,8 +120,9 @@ alias unproxy="unset http_proxy;unset https_proxy;"
 
 # krast alias
 # -----------
+alias ll="ls -lha"
 alias kc="tmux new -s krast"
-alias kr="tmux attach -t krast"
+alias kr="tmux attach -dt krast"
 alias gitconfigwanda="git config --local user.name 'gujunjie' && git config --local user.email gujunjie6@wanda.cn"
 alias gm="/Users/krast/OneDrive/workspace/shell/github-ghe-mirror.sh"
 
